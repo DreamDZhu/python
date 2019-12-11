@@ -37,3 +37,4 @@ venv
 .gitignore
 out
 gen
+!/week-1/作业/buycar.py
