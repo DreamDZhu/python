@@ -40,5 +40,6 @@ psutil.net_if_stats() #网络接口状态
 
 # 查找指定进程并输出 输出的字典为 {'name': 'WeChat', 'pid': 742, 'username': 'ddz'}
 for proc in psutil.process_iter(attrs=['pid', 'name', 'username']):
-    if proc.info['name'].startswith('WeChat'):
-        print(proc.info)
+    print(proc.info)
+    #if proc.info['name'].startswith('WeChat'):
+
