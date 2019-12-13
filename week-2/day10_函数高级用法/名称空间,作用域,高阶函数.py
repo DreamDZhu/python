@@ -54,8 +54,32 @@ func()
  #局部作用域：局域名称空间
 
 # 全局变量最好定义在文件开头
-date = '周五'
-def func():
-    print(date) #局部可以引用全局的，全局的不能引用局部的，因为局部在执行完成后，函数内存空间就被释放了
-func()
+#date = '周五'
+#def func():
+#    print(date) #局部可以引用全局的，全局的不能引用局部的，因为局部在执行完成后，函数内存空间就被释放了
+#func()
 
+#  注意点 ： 局部作用域，可以引用全局作用域，但是不能改变！！！不能改变！！！
+
+# 例子：这只是在局部创建了一个新的变量count ，并赋值为100 ，此count 不等同于全局变量域中的 count
+# count = 1
+# def funz():
+#     #count = 100
+#     count += 2   # 想修改全局变量，会报错 UnboundLocalError: local variable 'count' referenced before assignment
+#     print(count)
+# funz()
+
+# 为什么，局部作用域不能改变全局作用域的变量呢 ？
+# 当python 解释器读取到局部作用域时，发现了你对一个变量进行修改的操作，解释器会认为你在  局部已经定义过这个局部变量了 。但是局部作用域中并没有这个变量，所以会报错
+
+
+# 函数嵌套案例：inner函数可以使用func函数中的局部变量，但是无法改变
+# def func():
+#     count = 1
+#     def inner():
+#         count += 1
+#         print(count)
+#     inner()
+# func()
+
+# L ：local E:eclose G:global B:builtin
