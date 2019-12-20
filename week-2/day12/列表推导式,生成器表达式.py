@@ -47,21 +47,38 @@ names = [["Tom", 'Billy', 'Jefferson', 'Andrew', 'Wesley',
 names2 = [name.upper() for i in names for name in i if name.count('e') == 2]
 
 
-print(names2)
+# print(names2)
 
-# 生成器表达式
-
-
-
-
-
+# 生成器表达式，也有筛选模式，循环模式，多层循环构建，只有一个不同
+# [] 换成 () 其他都一样，用[] 就是列表 ,用 () 就是生成器
+obj = (i for i in range(1, 11))
+print(next(obj))
 
 
+# 总结
+'''
+# 缺点
+1、列表推导式，只能构建比较复杂并且有规律的列表。
+2、超过三层循环才能构建成功的，不建议使用列表推导式。
+3、查找错误的时候（debug），因为只有1行，所以比较难。
 
+# 优点
+1、一行构建，简单，清晰
 
+'''
 
+# 构建列表
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A']
 
+l1 = [i for i in range(2, 11)] + list('JQKA')
 
+print(l1)
 
-
-
+# 变种
+# 字典推导式
+lst1 = ['jay','jj','meet']
+lst2 = ['周杰伦','林俊杰','元宝']
+dic = {lst2[i]:lst1[i] for i in range(len(lst1))}
+print(dic)
+# 集合推导式
+print({i for i in range(1,11)})
