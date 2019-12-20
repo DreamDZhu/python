@@ -10,19 +10,23 @@ python内部提供的一些
 '''
 
 # 用生成器函数获取生成器
+
+
 def func():
-    #print(111)
-    #print(222)
-    yield 3  #当使用yield ，这个函数就变成了一个生成器
+    # print(111)
+    # print(222)
+    yield 3  # 当使用yield ，这个函数就变成了一个生成器
     a = 1
     b = 2
-    c = a+b
+    c = a + b
     print(c)
     yield 4
-ret=func()
 
-print(next(ret)) # next 取的是yield 3
-#print(next(ret))
+
+ret = func()
+
+print(next(ret))  # next 取的是yield 3
+# print(next(ret))
 # 1个next ，对应一个yield元素,每次执行next ,都会执行到下一个yield 的位置，并且会返回yield 后面的值，给这个整体
 
 # ret = func()
@@ -50,9 +54,12 @@ yield: 只要函数中有yield ，那么它就是生成器函数。yield 会给�
 
 # yield from 3.4版本新特性
 
+
 def func():
-    ll = [1,2,3,4,5]
+    ll = [1, 2, 3, 4, 5]
+    # yield from 对象：相当于把该对象转换为迭代器，并根据next来返回对应的元素，而不是直接返回整个对象
     yield from ll
+
 
 ret = func()
 print(next(ret))
@@ -60,13 +67,3 @@ print(next(ret))
 print(next(ret))
 print(next(ret))
 print(next(ret))
-
-# 生成器表达式，列表推导式
-
-
-
-
-
-
-
-
