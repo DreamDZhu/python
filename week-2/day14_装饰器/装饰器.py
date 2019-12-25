@@ -153,6 +153,18 @@ def dariy(name,age):
 ret = dariy("ddz",18)
 
 
+# 标准版装饰器写法
+def wrapper(f):
+    def inner(*args, **kwargs):
+        # 添加装饰功能，执行被装饰函数之前的操作
+
+        # 优美的分割线 #
+        ret = f(*args, **kwargs)
+        # 执行被装饰函数之后的功能
+
+        # 优美的分割线 #
+        return ret
+    return inner
 
 
 
