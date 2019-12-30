@@ -4,9 +4,9 @@
 """
 
 # 可执行语句
-a = 1
-print(a)
-
+# a = 1
+# print(a)
+b = 1
 
 # 函数定义
 def add(*args):
@@ -18,8 +18,12 @@ def add(*args):
 def f():
     print('hello world')
 
+def a():
+    print(123)
 
-f()
+
+if __name__ == '__main__':
+    print(a())
 
 
 
