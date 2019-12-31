@@ -29,8 +29,8 @@ t1 = time.localtime()
 t2 = time.mktime(t1) # 将time.struct_timee 对象转换成对应的时间戳，等于 time.time()
 print(t2)
 
-
-
+# 暂停当前线程，休眠指定时间
+time.sleep(1)
 
 
 
