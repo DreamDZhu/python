@@ -19,17 +19,44 @@ sleep(1)
 
 '''
 
-# import os
-# import sys
-# sys.path.append(os.path.dirname(__file__)+'/ceshi')
-#
-# from b import *
-#
-# test()
-# print(age)
+import os
+import sys
+sys.path.append(os.path.dirname(__file__)+'/ceshi')
+
+from b import *
+
 
 
 # 解决模块命名冲突 ： 使用别名解决冲突
+from time import sleep as s  # 导入成员起别名
+import os as o  # 给模块起别名
+
+print('123')
+s(2)
+print('456')
+
+
+# from xxx import * 控制成员被导入
+# 默认情况下，所有成员都会被导入
+
+# __all__ 是一个列表，用于表示本模块可以被外界使用的成员
+# __all__ = ['age','age2']
+# 验证__all__所控制的成员
+print(age)
+print(age2)
+print(age3)
+
+# 使用以下方式，可以绕过__all__的限制
+# import b as bb
+'''
+print(b.age)
+print(b.age2)
+print(b.age3)
+'''
+
+
+
+
 
 
 
