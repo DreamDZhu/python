@@ -40,10 +40,10 @@ import json
 
 
 # 从文件中反序列化
-with open('a.txt',mode='r',encoding='utf-8') as f:
-    res = json.load(f)
-    print(type(res))
-    print(res)
+# with open('a.txt',mode='r',encoding='utf-8') as f:
+#     res = json.load(f)
+#     print(type(res))
+#     print(res)
 
 '''
 需要记忆的方法:
@@ -52,10 +52,24 @@ json.dump(obj,f) #序列化到文件中
 json.loads(obj) #将内存中的数据反序列化到内存中
 json.load(f)    #将文件中的数据反序列化到内存中
 
-
+json文件通常是一次性写，一次性读。多次使用
+一般不会多次写，多次读。
 '''
 
+# 把需要序列化的对象，通过多次序列化的方式，用文件的write方法写到文件中
+# with open('a.txt',mode='at',encoding='utf-8') as f:
+#     f.write(json.dumps([1,2,3])+'\n')
+#     f.write(json.dumps([4,5,6])+'\n')
 
+# 把文件中的对象，多次反序列化后加载到内存中
+with open('a.txt',mode='rt',encoding='utf-8') as f:
+    # res = json.loads(f.readline().strip())
+    # print(res)
+    # res = json.loads(f.readline().strip())
+    # print(res)
+    for line in f.readlines():
+        res = json.loads(line.strip())
+        print(res)
 
 
 # t -> text    已文本形式 表示单位
