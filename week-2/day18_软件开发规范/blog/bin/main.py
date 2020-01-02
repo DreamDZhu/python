@@ -1,81 +1,42 @@
+# import src
+# 直接引用是加载不到的，因为不在内置的路径下
+# import sys
+# import os
+
+# 这样引用虽然可以实现，但是会有问题
+# work_path = os.path.abspath("..")
+# sys.path.append(work_path+r'/core')
+# sys.path.append(work_path+r'/conf')
+# sys.path.append(work_path+r'/lib')
+
+# 1. 项目中的这些py文件，肯定会互相引用settings , com .虽然我们第一个运行的是main.py ,当运行后，sys.path.append将其他的目录都添加到内存中去，这样其他的模块再互相引用的时候，就不会发生引用不到的问题。但是如果现在有几十个文件夹，难道一个个去添加吗 ？？
+
+# import sys
+# import os
+#
+# # 可以直接导入父目录，通过from 子路径 import 模块 的方式来进行导入
+# # 但是我们要动态的获取项目的主目录路径
+# sys.path.append(os.path.abspath(".."))
+#
+# # from core import src
+# #
+# # print(sys.path)
+#
+# #import src
+# #sys.path
+#
+# print(__file__) # 动态获取本文件的绝对路径
+# print(os.path.dirname(__file__)) # 获取父级的目录
+# print(os.path.dirname(os.path.dirname(__file__))) #获取blog的绝对路径
+
 import os
 import sys
 
+BASE_PATH = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_PATH)
 
-user_dict = {}
-status_dict = {
-    'username':None,
-    'status':False
-}
+from core import src
 
-def get_user_pwd():
-    with open(conf.register_path, encoding='utf-8') as f:
-        for line in f:
-            info_lst = line.strip().split(',')
-            user_dict[info_lst[0].strip()] = info_lst[1].strip()
-
-
-# 装饰器在文件中，属于公共组件
-def auth(f):
-
-    def inner(*args,**kwargs):
-        ret = f(*args,**kwargs)
-        return ret
-    return inner
-
-
-def login():
-    pass
-
-def register():
-    pass
-
-
-
-# 这些属于主逻辑函数
-@auth
-def article():
-    print('欢迎访问文章界面')
-
-@auth
-def comment():
-    print('欢迎访问评论页面')
-
-@auth
-def dariy():
-    print('欢迎访问日记页面')
-
-@auth
-def collections():
-    print('欢迎访问收藏页面')
-
-
-
-def loginout():
-    pass
-
-
-def _quit():
-    pass
-
-dic = {
-    1:login(),
-    2:register(),
-}
-
-def run():
-    while True:
-        print("""
-            1.登录
-            2.注册
-            3.进入文章页面
-            4.进入评论页面
-            5.进入日记页面
-            6.进入收藏页面
-            7.注销账号
-            8.退出整个程序
-        """)
-        num = input('请输入对应选项: ').strip()
-        num = int(num)
-
-run()  # 属于启动按钮
+# 这样就防止其他函数在引用该模块的时候，可以启动
+if __name__ == '__main__':
+    src.run()
