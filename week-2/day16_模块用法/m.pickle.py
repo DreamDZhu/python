@@ -58,8 +58,9 @@ json :
 
 pickle :
 1. 可以序列化所有数据类型，并反序列的时候得到正确的数据类型
-2. pickle 是 object <==> bytes
-3 pickle 数据通常只允许python进行读取
+2. 可以对同一个文件多次序列化
+3. pickle 是 object <==> bytes
+4. pickle 数据通常只允许python进行读取，不能跨语言
 
 """
 
