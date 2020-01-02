@@ -34,3 +34,15 @@ print(m.hexdigest())
 m = hashlib.md5()
 m.update(b'1qaz2wsx')
 print(m.hexdigest())
+
+# 用Hashlib模块完成注册与登录
+op = input('1.注册 2.登录 3.退出')
+
+def get_md5(username,passwd):
+    m = hashlib.md5()
+    m.update(username.encode('utf-8'))
+    m.update(passwd.encode('utf-8'))
+    return m.hexdigest()
+
+
+print(get_md5("root","admin@123"))
