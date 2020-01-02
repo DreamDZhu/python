@@ -16,19 +16,46 @@
 
 
 import json
-ret = json.dumps([1, 2, 3])  # 将指定的对象转换成Json格式的字符串
-print(type(ret))
-print(ret.split(','))
+# ret = json.dumps([1, 2, 3])  # 将指定的对象转换成Json格式的字符串
+# print(type(ret))
+# print(ret.split(','))
+#
+# s = json.dumps((1, 2, 3))  # 元组序列化后，就变成了列表。无法反序列化再成为元组
+# print(s)
+#
+# res = json.dumps({'name': 'Andy', 'age': 10})
+# print(res)
+#
+# # 将json 结果写到file中
+# with open('a.txt', mode='at', encoding='utf-8') as f:
+#     json.dump([1, 2, 3], f)
+#
+#
+#
+# # 反序列化
+# res = json.dumps([1,2,3]) #先生成一个json数据
+# ret = json.loads(res)     #然后反序列化
+# #print(ret)
+# print(type(ret))
 
-s = json.dumps((1, 2, 3))  # 元组序列化后，就变成了列表。无法反序列化再成为元组
-print(s)
 
-res = json.dumps({'name': 'Andy', 'age': 10})
-print(res)
+# 从文件中反序列化
+with open('a.txt',mode='r',encoding='utf-8') as f:
+    res = json.load(f)
+    print(type(res))
+    print(res)
 
-# 将json 结果写到file中
-with open('a.txt', mode='at', encoding='utf-8') as f:
-    json.dump([1, 2, 3], f)
+'''
+需要记忆的方法:
+json.dumps(obj) #序列化到内存中
+json.dump(obj,f) #序列化到文件中
+json.loads(obj) #将内存中的数据反序列化到内存中
+json.load(f)    #将文件中的数据反序列化到内存中
+
+
+'''
+
+
 
 
 # t -> text    已文本形式 表示单位
