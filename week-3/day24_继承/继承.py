@@ -102,27 +102,160 @@
 
 
 # 执行代码输出什么？
+from types import FunctionType, MethodType
+
+
 class Foo:
     def __init__(self):
-        self.func()
+        self.func()  # 在每一个self 调用func的时候，我们不看这句话在哪里执行，而是看self究竟是谁
 
     def func(self):
         print('in foo')
+
 
 class Son(Foo):
 
     def func(self):
         print('in son')
 
-Son()
+# Son()
 
 # 如何给狗和猫定制个性的属性
 
 
+class Animal:
+    def __init__(self, name, food):
+        self.name = name
+        self.food = food
+        self.hp = 100
+        self.mp = 100
+
+    def eat(self):
+        print(f"{self.name}吃{self.food}")
+
+    def drink(self):
+        print(f"{self.name}喝水")
+
+    def sleep(self):
+        print(f"{self.name}睡觉")
+
+
+class Cat(Animal):
+    def __init__(self, name, food, eye_color):
+        Animal.__init__(self, name, food)  # 调用父类的初始化，去完成一些通用属性的初始化
+        self.eye_color = eye_color         # 这样这个属性，就属于派生属性
+
+
+class Dog(Animal):
+    def __init__(self, name, food, size):
+        Animal.__init__(self, name, food)
+        self.size = size
+
+
+# 小白 = Cat('小白', '猫粮', '蓝色')
+# print(小白.__dict__)
+
+
+# 单 多重继承
+# class A:
+#     def __init__(self):
+#         self.func()
+#
+#     def func(self):
+#         print("i am a")
+#
+# class B(A):
+#     def func(self):
+#         print("i am b")
+#
+# class C(B):pass
+# c = C()
+
+
+# 多继承 有好几个爹
+# 有一些语言不支持多继承 java
+# python 语言的特点：可以在面向对象中支持多继承
+
+class A:
+    def func(self): print("IN A")
+
+
+class B:
+    def func(self): print("IN B")
+
+
+class C(B, A):
+    pass
+
+
+# 当进行多继承时，调用到多个父类中的同名方法时，函数的寻找顺序优先从先继承的父类中寻找，以此类推
+# C().func()
+
+# 调子类的对象：子类自己拥有的时候
+# 调父类的对象：子类自己没有的时候
+# 调子类和父类的：子类父类都有，在子类中调用父类的
+
+# 多继承
+# 一个类有多个父类，在调用父类方法的时候，按照继承顺序，先继承的就先寻找，以此类推
+
+
+# 所有类都默认继承Object 类
+class A(object):
+    pass
+
+
+# 输出A的父类
+# print(A.__bases__)  # (<class 'object'>,)
+
+
+class C:
+    pass
+
+
+class B(A, C):
+    pass
+
+
+# print(B.__bases__)  # (<class '__main__.A'>, <class '__main__.C'>)
+
+# 如果存在多层继承关系的话， 默认bases 只输出上一级父类信息，
 
 
 
+a = 10
+b = 'abc'
+c = 110
 
+# 判断数据是否是对应的类型
+# print(isinstance(a, int))
+# print(isinstance(b, str))
+# print(isinstance(c, str))
+#
+# # 也是判断类型
+# print(type(a) is int)
+# print(type(b) is str)
+
+
+class Animal:pass
+class Cat(Animal):pass
+
+小白 = Cat()
+
+print(type(小白) is Cat)  # True
+print(type(小白) is Animal) # False
+
+print(isinstance(小白, Cat)) # True
+print(isinstance(小白, Animal)) # True
+
+# 对比后能发现，type 只能判断对象是否是该类型 。而isinstance ，可以判断对象跟对象的继承关系
+
+
+
+# 绑定方法和普通函数
+# FunctionType : 函数
+# MethodType : 方法
+
+# isinstance type
 
 
 
